@@ -66,7 +66,7 @@
 	TypeError: no implicit conversion of Fixnum into Array
         	from (irb):4:in `+'
         	from (irb):4
-        	from /usr/local/rvm/rubies/ruby-2.0.0-p247/bin/    		irb:13:in `<main>'
+        	from /usr/local/rvm/rubies/ruby-2.0.0-p247/bin/irb:13:in `<main>'
 
 40-
 	2.0.0p247 :006 > x = %w{a b c b a}
@@ -124,4 +124,111 @@
 	2.0.0p247 :009 > 1..3.to_a
 	NoMethodError: undefined method `to_a' for 3:Fixnum
         	from (irb):9
-        	from /usr/local/rvm/rubies/ruby-2.0.0-p247/bin/	 			irb:13:in `<main>'
+        	from /usr/local/rvm/rubies/ruby-2.0.0-p247/bin/irb:13:in `<main>'
+
+46-
+
+	2.0.0p247 :001 > true.class
+	 => TrueClass 
+	2.0.0p247 :002 > false.class
+ 	 => FalseClass 
+	2.0.0p247 :003 > puts "hello" if 0
+	 hello
+ 	 => nil 
+	2.0.0p247 :004 > puts "hello" if nil
+	 => nil 
+	2.0.0p247 :005 > puts "hello" if ""
+	 (irb):5: warning: string literal in condition
+	 hello
+	 => nil 
+
+47-
+
+	2.0.0p247 :007 > x = :sym
+	 => :sym 
+	2.0.0p247 :008 > x.class
+	 => Symbol 
+	2.0.0p247 :009 > x == 'sym'
+	 => false 
+	2.0.0p247 :010 > x == :sym
+	 => true 
+	2.0.0p247 :011 > z = :'a long symbol'
+	 => :"a long symbol" 
+	2.0.0p247 :012 > z.class
+	 => Symbol 
+	2.0.0p247 :013 > x == 'sym'.to_sym
+	 => true 
+	2.0.0p247 :014 > x.to_s == 'sym'
+	 => true
+
+48-
+
+	2.0.0p247 :015 > s = "Ruby"
+	 => "Ruby" 
+	2.0.0p247 :016 > t = s
+	 => "Ruby" 
+	2.0.0p247 :017 > t[-1] =""
+	 => "" 
+	2.0.0p247 :018 > print s
+	 Rub => nil 
+	2.0.0p247 :019 > t = "Java"
+	 => "Java" 
+	2.0.0p247 :020 > print s, t
+	 RubJava => nil 
+ 
+49- "%d %s" % [3, "rubies"]
+      => "3 rubies"
+
+50-
+
+	2.0.0p247 :002 > x, y = 4, 5
+	 => [4, 5] 
+	2.0.0p247 :003 > z = x > y ? x : y
+	 => 5 
+	2.0.0p247 :004 > x,y,z = [1,2,3]
+	 => [1, 2, 3] 
+
+	
+51-
+
+	2.0.0p247 :005 > x = { :a =>1, :b => 2 }
+	 => {:a=>1, :b=>2} 
+	2.0.0p247 :006 > x.keys
+	 => [:a, :b] 
+	2.0.0p247 :007 > x.values
+	 => [1, 2] 
+	2.0.0p247 :008 > x[:c] = 3
+	 => 3 
+	2.0.0p247 :009 > x
+	 => {:a=>1, :b=>2, :c=>3} 
+	2.0.0p247 :010 > x.delete('a')
+	 => nil 
+	2.0.0p247 :011 > x
+	 => {:a=>1, :b=>2, :c=>3} 
+	2.0.0p247 :012 > x.delete(:a)
+	 => 1 
+	2.0.0p247 :013 > x
+	 => {:b=>2, :c=>3} 
+	2.0.0p247 :014 >  x = { :a => 1, :b => 2, :c => 4  }
+	 => {:a=>1, :b=>2, :c=>4} 
+	2.0.0p247 :015 > x.delete_if { |k,v| v % 2 == 0 }
+	 => {:a=>1} 
+	2.0.0p247 :016 > x
+	 => {:a=>1} 
+
+52- Intenta hacer un salto pero se encuentra con el siguiente error:
+
+	2.0.0p247 :001 > yield 4, 5
+	 LocalJumpError: no block given (yield)
+         from (irb):1
+         from /usr/local/rvm/rubies/ruby-2.0.0-p247/bin/irb:13:in `<main>'
+
+53- La primera opcion sirve para inicializar la variable counts a un array de tamaño 0, mientras q con la segunda se inicializa al simbolo de los corchetes
+
+54- 
+
+	2.0.0p247 :005 > 'hello, world, hello LPP'.scan /\w+/
+	 => ["hello", "world", "hello", "LPP"]
+
+55-La primera sentencia inicializa un array de 3 elementos, y la segunda va mostrando los distintos valores del array 1 por 1
+
